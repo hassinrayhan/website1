@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hassin Rayhan – Student at DIP | Personal Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #0b1f4d;
+      --blue: #1d4ed8;
+      --blue-dark: #1e3a8a;
+      --blue-soft: #eff4ff;
+      --green: #14532d;
+      --green-dark: #0b3a1f;
+      --white: #ffffff;
+      --text: #1a2540;
+      --muted: #3d4a6b;
+      --border: #b9c6e8;
+      box-sizing: border-box;
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--white);
+      overflow-wrap: anywhere;
+    }
+    a { color: var(--blue); text-underline-offset: 3px; }
+    a:hover { color: var(--blue-dark); }
+    :focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; box-shadow: 0 0 0 6px #ffffff; }
+
+    .skip-link {
+      position: absolute; left: 0.5rem; top: -4rem;
+      background: var(--green); color: var(--white);
+      padding: 0.75rem 1rem; border-radius: 0.25rem; z-index: 100;
+    }
+    .skip-link:focus { top: 0.5rem; color: var(--white); }
+
+    header.site-header {
+      background: var(--green);
+      color: var(--white);
+      position: sticky; top: 0; z-index: 50;
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+    .nav-wrap {
+      max-width: 64rem; margin: 0 auto; padding: 0.75rem 1.25rem;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1.5rem;
+    }
+    .brand { font-weight: 700; color: var(--white); text-decoration: none; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; }
+    nav a {
+      display: inline-block; padding: 0.4rem 0.7rem; color: var(--white);
+      text-decoration: underline; text-underline-offset: 4px; border-radius: 0.25rem;
+    }
+    nav a:hover { background: var(--green-dark); color: var(--white); }
+    header :focus-visible { outline-color: var(--white); box-shadow: none; }
+
+    main { display: block; }
+    section { padding: 4rem 1.25rem; }
+    .container { max-width: 64rem; margin: 0 auto; }
+    section:nth-of-type(even) { background: var(--blue-soft); }
+
+    h1, h2, h3 { color: var(--navy); line-height: 1.2; margin-top: 0; }
+    h1 { font-size: clamp(2rem, 6vw, 3.25rem); margin-bottom: 0.5rem; }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 4px solid var(--blue); display: inline-block; }
+    h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+
+    #introduction { background: linear-gradient(180deg, var(--blue-soft), var(--white)); padding-top: 5rem; padding-bottom: 5rem; }
+    .role { font-size: 1.25rem; color: var(--muted); margin: 0 0 1.5rem; }
+    .button {
+      display: inline-block; background: var(--blue); color: var(--white);
+      padding: 0.85rem 1.5rem; border-radius: 0.4rem; font-weight: 700;
+      text-decoration: none; border: 2px solid var(--blue);
+    }
+    .button:hover { background: var(--blue-dark); border-color: var(--blue-dark); color: var(--white); }
+
+    .grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+    .card {
+      background: var(--white); border: 2px solid var(--border);
+      border-top: 6px solid var(--blue); border-radius: 0.5rem; padding: 1.5rem;
+    }
+    .status {
+      display: inline-block; font-weight: 700; font-size: 0.9rem; color: var(--navy);
+      background: var(--blue-soft); border: 2px dashed var(--blue); border-radius: 0.25rem;
+      padding: 0.3rem 0.6rem; margin: 0 0 1rem;
+    }
+    dl { margin: 0; }
+    dt { font-weight: 700; color: var(--navy); margin-top: 0.75rem; }
+    dd { margin: 0; color: var(--muted); }
+
+    /* Placeholder style: dashed border + bracketed text, so meaning does not rely on color alone */
+    .placeholder { border: 1px dashed var(--muted); border-radius: 0.25rem; padding: 0.05rem 0.35rem; font-style: italic; color: var(--muted); }
+
+    ul.skills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    ul.skills li { background: var(--white); border: 2px solid var(--blue); border-radius: 2rem; padding: 0.4rem 1rem; color: var(--navy); font-weight: 600; }
+    ul.skills li.is-placeholder { border-style: dashed; font-weight: 400; font-style: italic; color: var(--muted); }
+
+    .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+    .contact-list li { background: var(--white); border: 2px solid var(--border); border-radius: 0.5rem; padding: 1rem 1.25rem; }
+    .contact-label { display: block; font-weight: 700; color: var(--navy); }
+
+    footer { background: var(--navy); color: var(--white); padding: 1.5rem 1.25rem; text-align: center; }
+
+    @media (max-width: 40rem) {
+      section { padding: 3rem 1rem; }
+      .nav-wrap { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#introduction">Hassin Rayhan</a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+
+    <section id="introduction" aria-labelledby="introduction-heading">
+      <div class="container">
+        <h1 id="introduction-heading">Hassin Rayhan</h1>
+        <p class="role">Student at Development Innovation Platform</p>
+        <a class="button" href="#projects">View Projects</a>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <h2 id="projects-heading">Projects</h2>
+        <div class="grid">
+
+          <!-- PROJECT 1: details supplied. Still to add: proof URL. Remove the status line once the proof URL is verified. -->
+          <article class="card" aria-labelledby="project-1-title">
+            <p class="status">Project details awaiting verified information.</p>
+            <h3 id="project-1-title">My drone</h3>
+            <dl>
+              <dt>Description</dt>
+              <dd>Built a drone with PVC.</dd>
+              <dt>My role</dt>
+              <dd>Electronic Engineering and Designing</dd>
+              <dt>Tools used</dt>
+              <dd>Soldering Iron, Super glue, anticutter and PVC</dd>
+              <dt>Outcome</dt>
+              <dd>Fully functional camera drone</dd>
+              <dt>Proof or supporting URL</dt>
+              <dd><span class="placeholder">[Add verified URL]</span></dd>
+            </dl>
+          </article>
+
+          <!-- PROJECT 2: replace every bracketed placeholder with verified details. Remove the status line once all are verified. -->
+          <article class="card" aria-labelledby="project-2-title">
+            <p class="status">Project details awaiting verified information.</p>
+            <h3 id="project-2-title"><span class="placeholder">[Add verified project title]</span></h3>
+            <dl>
+              <dt>Description</dt>
+              <dd><span class="placeholder">[Add verified brief description]</span></dd>
+              <dt>My role</dt>
+              <dd><span class="placeholder">[Add verified role]</span></dd>
+              <dt>Tools used</dt>
+              <dd><span class="placeholder">[Add verified tools]</span></dd>
+              <dt>Outcome</dt>
+              <dd><span class="placeholder">[Add verified outcome]</span></dd>
+              <dt>Proof or supporting URL</dt>
+              <dd><span class="placeholder">[Add verified URL]</span></dd>
+            </dl>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <h2 id="skills-heading">Skills</h2>
+        <!-- Verified skills supplied. Replace the placeholder below with another verified skill, or delete it. -->
+        <ul class="skills">
+          <li>Making customized drones, Powerbanks, Bluetooth headsets etc</li>
+          <li>Making customized bodies for devices when 3D printing is not available</li>
+          <li class="is-placeholder">Hardware repairings</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 id="about-heading">About</h2>
+        <!-- Replace or extend with more verified background and interests. -->
+        <p>Hassin Rayhan is a student at DIP. Their professional interest is researching drones and AI.</p>
+        <p>Student of Dhaka Polytechnical Institute.</p>
+        <p>Electrical engineering student.</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading">Contact</h2>
+        <!-- Email is verified and clickable. Replace the other placeholders with verified details when available. -->
+        <ul class="contact-list">
+          <li><span class="contact-label">Email</span> <a href="mailto:hassinrayhan8@gmail.com">hassinrayhan8@gmail.com</a></li>
+          <li><span class="contact-label">LinkedIn</span> <span class="placeholder">[Add verified URL]</span></li>
+          <li><span class="contact-label">Additional contact (optional)</span> <span class="placeholder">Personal Phone number</span></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; Hassin Rayhan. Portfolio content is being updated.</p>
+  </footer>
+</body>
+</html>
